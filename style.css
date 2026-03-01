@@ -1,0 +1,379 @@
+/*************** Reset *********************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*************** Variabler *****************/
+
+:root {
+  --color-primary: #fffaf5;
+  --color-secondary: #402a2a;
+  --font-heading: "Luckiest Guy", cursive;
+  --font-body: "Inter", sans-serif;
+}
+
+/********** Generel styling *****************/
+
+body {
+  background-color: var(--color-primary);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
+
+p,
+a,
+li {
+  font-family: var(--font-body);
+}
+
+/************** hero_section *****************/
+
+.hero_section {
+  padding: 2rem 4rem;
+  margin-bottom: 6rem;
+}
+
+.hero_section h1 {
+  font-size: 3.125rem;
+  color: var(--color-secondary);
+}
+
+.hero_section h2 {
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: var(--color-secondary);
+}
+
+.hero_section img {
+  max-width: 500px;
+}
+
+/************* about_section ***************/
+
+.about_section {
+  background-color: var(--color-secondary);
+  padding: 5rem 2rem;
+}
+
+.about_section h1 {
+  font-size: 3.125rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.about_section p {
+  color: var(--color-primary);
+  line-height: 28px;
+  font-size: 1.2rem;
+}
+.project_image {
+  display: none;
+  object-fit: cover;
+  width: 100%;
+}
+
+/************** cv_section ******************/
+
+.cv_section {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cv_section h3 {
+  font-size: 2rem;
+  color: var(--color-secondary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 4rem;
+}
+
+.line {
+  background-color: var(--color-secondary);
+  height: 2px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 1rem;
+  color: var(--color-secondary);
+}
+
+.cv_section p {
+  color: var(--color-secondary);
+}
+
+/************* project_section *************/
+
+.project_section {
+  padding: 2rem;
+}
+
+.project_section h1 {
+  font-size: 3.125rem;
+  color: var(--color-secondary);
+  margin-bottom: 2rem;
+}
+
+.project_section h2 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.project_section p {
+  color: var(--color-primary);
+  margin-bottom: 0.8rem;
+}
+
+.project_section a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.project {
+  background-color: var(--color-secondary);
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.project_section {
+  position: relative;
+  padding-left: 60px; /* plads til linjen */
+}
+
+.scroll-line {
+  position: absolute;
+  top: 0;
+  left: 30px; /* midt i margin */
+  width: 4px;
+  height: 0; /* starter kort */
+  background-color: var(--color-secondary);
+  transition: height 0.2s ease-out;
+  z-index: 0; /* bag projekterne */
+}
+
+.project {
+  position: relative;
+  background-color: var(--color-secondary);
+  margin-bottom: 5rem;
+  padding: 2rem;
+  z-index: 1; /* ovenpå linjen */
+  border-radius: 8px;
+}
+
+/************** Footer ****************/
+
+footer {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  padding: 2rem;
+}
+
+footer h2 {
+  font-family: var(--font-body);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+footer h1 {
+  font-size: 2.5rem;
+}
+
+footer .line {
+  background-color: var(--color-primary);
+}
+
+footer img {
+  width: 35px;
+}
+
+footer p {
+  line-height: 25px;
+}
+
+.apps_container {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+/**************** Desktop ******************/
+
+@media (min-width: 1000px) {
+  /************ Hero_section *************/
+  .hero_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 8rem;
+    margin-top: 3rem;
+  }
+
+  .hero_section h1 {
+    font-size: 6rem;
+  }
+
+  .hero_section h2 {
+    font-size: 3.5rem;
+  }
+
+  /************* about_section **************/
+
+  .about_section {
+    padding: 8rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 8rem;
+  }
+
+  .about_section h1 {
+    font-size: 6rem;
+  }
+
+  .about_text {
+    order: 2;
+  }
+
+  .about_section p {
+    font-size: 1.5rem;
+    line-height: 40px;
+  }
+
+  /************** cv_section *****************/
+
+  .cv_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 200px;
+    max-width: fit-content;
+    margin: 0 auto;
+    justify-items: center;
+    margin-bottom: 8rem;
+  }
+
+  .cv_section h3 {
+    text-align: left;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .work_experience {
+    margin-top: 6rem;
+  }
+
+  .cv_section p,
+  .cv_section li {
+    font-size: 1.5rem;
+  }
+
+  .cv_section .line {
+    width: 500px;
+  }
+
+  /************ project_section ***************/
+
+  .grid_1-1-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .project1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+  }
+
+  .project2 {
+    grid-column: 2 / span 3;
+    grid-row: 3 / span 4;
+  }
+
+  .project3 {
+    grid-column: 1 / span 2;
+    grid-row: 7 / span 8;
+  }
+
+  .project_section h1 {
+    font-size: 6rem;
+    margin-bottom: 5rem;
+  }
+
+  .project_section h2 {
+    font-size: 3rem;
+  }
+
+  .project_section p {
+    font-size: 1.5rem;
+  }
+
+  .project {
+    max-width: 800px;
+    margin: 0rem auto;
+    position: relative;
+    margin-bottom: 10rem;
+    padding-left: 4rem;
+  }
+
+  .project_image {
+    display: block;
+  }
+
+  .project_image img {
+    width: 500px; /* fast bredde */
+    height: auto;
+    margin: 2rem auto 0 auto; /* top, auto horisontalt, bund */
+  }
+
+  /************** footer **********************/
+
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 5rem;
+    margin-top: 8rem;
+  }
+
+  footer .line {
+    width: 400px;
+  }
+
+  footer h1 {
+    font-size: 4rem;
+  }
+
+  footer h2 {
+    font-size: 2.4rem;
+  }
+
+  footer p {
+    font-size: 1.5rem;
+    line-height: 40px;
+  }
+}
