@@ -14,10 +14,34 @@ img {
 /*************** Variabler *****************/
 
 :root {
+  /************ color ****************/
   --color-primary: #fffaf5;
   --color-secondary: #402a2a;
+
+  /*********** font *****************/
   --font-heading: "Luckiest Guy", cursive;
   --font-body: "Inter", sans-serif;
+
+  /**************** Type ****************/
+  --step--2: clamp(0.7813rem, 0.6099rem + 0.7614vw, 1.2rem);
+  --step--1: clamp(0.9375rem, 0.7074rem + 1.0227vw, 1.5rem);
+  --step-0: clamp(1.125rem, 0.8182rem + 1.3636vw, 1.875rem);
+  --step-1: clamp(1.35rem, 0.9435rem + 1.8068vw, 2.3438rem);
+  --step-2: clamp(1.62rem, 1.0842rem + 2.3813vw, 2.9297rem);
+  --step-3: clamp(1.944rem, 1.2411rem + 3.1238vw, 3.6621rem);
+  --step-4: clamp(2.3328rem, 1.4145rem + 4.0815vw, 4.5776rem);
+  --step-5: clamp(2.7994rem, 1.6037rem + 5.314vw, 5.722rem);
+
+  /*************** space **************/
+  --space-3xs: clamp(0.3125rem, 0.2358rem + 0.3409vw, 0.5rem);
+  --space-2xs: clamp(0.5625rem, 0.4091rem + 0.6818vw, 0.9375rem);
+  --space-xs: clamp(0.875rem, 0.6449rem + 1.0227vw, 1.4375rem);
+  --space-s: clamp(1.125rem, 0.8182rem + 1.3636vw, 1.875rem);
+  --space-m: clamp(1.6875rem, 1.2273rem + 2.0455vw, 2.8125rem);
+  --space-l: clamp(2.25rem, 1.6364rem + 2.7273vw, 3.75rem);
+  --space-xl: clamp(3.375rem, 2.4545rem + 4.0909vw, 5.625rem);
+  --space-2xl: clamp(4.5rem, 3.2727rem + 5.4545vw, 7.5rem);
+  --space-3xl: clamp(6.75rem, 4.9091rem + 8.1818vw, 11.25rem);
 }
 
 /********** Generel styling *****************/
@@ -28,14 +52,23 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+summary {
   font-family: var(--font-heading);
 }
 
 p,
 a,
-li {
+li,
+details {
   font-family: var(--font-body);
+}
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 /************** hero_section *****************/
@@ -60,47 +93,48 @@ li {
 
 .hero_section img {
   max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /************* about_section ***************/
 
 .about_section {
   background-color: var(--color-secondary);
-  padding: 5rem 2rem;
+  padding: var(--space-xl) var(--space-m);
 }
 
 .about_section h1 {
-  font-size: 3.125rem;
+  font-size: var(--step-5);
   color: var(--color-primary);
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-s);
 }
 
 .about_section p {
   color: var(--color-primary);
   line-height: 28px;
-  font-size: 1.2rem;
-}
-.project_image {
-  display: none;
-  object-fit: cover;
-  width: 100%;
+  font-size: var(--step--1);
 }
 
 /************** cv_section ******************/
 
 .cv_section {
-  padding: 2rem;
+  padding: var(--space-xl) var(--space-m);
   max-width: 600px;
   margin: 0 auto;
+  margin-bottom: 4rem;
 }
 
 .cv_section h3 {
-  font-size: 2rem;
+  font-size: var(--step-2);
   color: var(--color-secondary);
   text-align: center;
-  margin-bottom: 1.5rem;
-  margin-top: 4rem;
+  margin-bottom: var(--space-m);
+  margin-top: var(--space-xl);
+}
+
+.education h3 {
+  margin-top: 0;
 }
 
 .line {
@@ -114,73 +148,12 @@ li {
   list-style: none;
   margin-bottom: 1rem;
   color: var(--color-secondary);
+  font-size: var(--step--1);
 }
 
 .cv_section p {
   color: var(--color-secondary);
-}
-
-/************* project_section *************/
-
-.project_section {
-  padding: 2rem;
-}
-
-.project_section h1 {
-  font-size: 3.125rem;
-  color: var(--color-secondary);
-  margin-bottom: 2rem;
-}
-
-.project_section h2 {
-  color: var(--color-primary);
-  font-size: 1.8rem;
-  margin-bottom: 0.8rem;
-}
-
-.project_section p {
-  color: var(--color-primary);
-  margin-bottom: 0.8rem;
-}
-
-.project_section a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.project {
-  background-color: var(--color-secondary);
-  margin-bottom: 3rem;
-  padding: 2rem;
-}
-
-.underline {
-  text-decoration: underline;
-}
-
-.project_section {
-  position: relative;
-  padding-left: 60px; /* plads til linjen */
-}
-
-.scroll-line {
-  position: absolute;
-  top: 0;
-  left: 30px; /* midt i margin */
-  width: 4px;
-  height: 0; /* starter kort */
-  background-color: var(--color-secondary);
-  transition: height 0.2s ease-out;
-  z-index: 0; /* bag projekterne */
-}
-
-.project {
-  position: relative;
-  background-color: var(--color-secondary);
-  margin-bottom: 5rem;
-  padding: 2rem;
-  z-index: 1; /* ovenpå linjen */
-  border-radius: 8px;
+  font-size: var(--step--1);
 }
 
 /************** Footer ****************/
@@ -219,6 +192,100 @@ footer p {
   margin-top: 1rem;
 }
 
+/********* according **************/
+
+html {
+  interpolate-size: allow-keywords;
+}
+
+.according {
+  display: grid;
+  grid-template-columns: min(100%, 150ch);
+  place-content: center;
+  gap: 2px;
+  padding: var(--space-xl) var(--space-m);
+
+  h1 {
+    font-size: var(--step-5);
+    color: var(--color-secondary);
+  }
+}
+
+summary {
+  cursor: pointer;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+  font-size: 1.8rem;
+}
+
+.content {
+  padding: 1rem;
+
+  p {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    text-wrap: balance;
+  }
+}
+
+::marker {
+  content: none;
+}
+
+summary::after {
+  content: "+";
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+[open] summary::after {
+  content: "-";
+}
+
+::details-content {
+  height: 0;
+  overflow: clip;
+  transition: 0.8s allow-discrete;
+}
+
+details[open]::details-content {
+  height: auto;
+}
+
+.project_video {
+  margin-top: 2rem;
+}
+
+.according a {
+  display: block;
+  width: fit-content;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  margin: 2rem auto 0;
+}
+
+.according a:hover {
+  opacity: 90%;
+}
+
+video {
+  max-width: 500px;
+  margin-inline: auto;
+}
+
 /**************** Desktop ******************/
 
 @media (min-width: 1000px) {
@@ -246,23 +313,24 @@ footer p {
   .about_section {
     padding: 8rem 4rem;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
     margin: 0 auto;
     align-items: center;
     justify-items: center;
-    margin-bottom: 8rem;
-  }
+    margin-bottom: 6rem;
 
-  .about_section h1 {
-    font-size: 6rem;
+    & img {
+      max-width: 550px;
+    }
   }
 
   .about_text {
+    text-wrap: wrap;
     order: 2;
   }
 
   .about_section p {
-    font-size: 1.5rem;
     line-height: 40px;
   }
 
@@ -280,87 +348,39 @@ footer p {
 
   .cv_section h3 {
     text-align: left;
-    font-size: 3rem;
-    margin-bottom: 3rem;
+  }
+
+  .cv_section h3:last-of-type {
+    margin-top: 0;
   }
 
   .work_experience {
     margin-top: 6rem;
   }
 
-  .cv_section p,
-  .cv_section li {
-    font-size: 1.5rem;
-  }
-
   .cv_section .line {
     width: 500px;
   }
 
-  /************ project_section ***************/
-
-  .grid_1-1-1 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .project1 {
-    grid-column: 1 / span 2;
-    grid-row: 1 / span 2;
-  }
-
-  .project2 {
-    grid-column: 2 / span 3;
-    grid-row: 3 / span 4;
-  }
-
-  .project3 {
-    grid-column: 1 / span 2;
-    grid-row: 7 / span 8;
-  }
-
-  .project_section h1 {
-    font-size: 6rem;
-    margin-bottom: 5rem;
-  }
-
-  .project_section h2 {
-    font-size: 3rem;
-  }
-
-  .project_section p {
-    font-size: 1.5rem;
-  }
-
-  .project {
-    max-width: 800px;
-    margin: 0rem auto;
-    position: relative;
-    margin-bottom: 10rem;
-    padding-left: 4rem;
-  }
-
-  .project_image {
-    display: block;
-  }
-
-  .project_image img {
-    width: 500px; /* fast bredde */
-    height: auto;
-    margin: 2rem auto 0 auto; /* top, auto horisontalt, bund */
-  }
-
   /************** footer **********************/
 
-  footer {
+  .footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding-top: 5rem;
-    margin-top: 8rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  footer .line {
+  .footer > *:first-child {
+    justify-self: start;
+  }
+
+  .footer > *:last-child {
+    justify-self: end;
+  }
+
+  .footer .line {
     width: 400px;
   }
 
@@ -375,5 +395,22 @@ footer p {
   footer p {
     font-size: 1.5rem;
     line-height: 40px;
+  }
+
+  /********* according **************/
+
+  .according {
+    margin-bottom: 14rem;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .according a {
+    margin: 2rem 0 0 0;
   }
 }
