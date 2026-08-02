@@ -45,6 +45,9 @@ img {
 }
 
 /********** Generel styling *****************/
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: var(--color-primary);
@@ -71,38 +74,184 @@ video {
   object-fit: cover;
 }
 
+/************** Menu ************************/
+
+header {
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--color-secondary);
+  width: 96%;
+  margin: 0 auto;
+  border-radius: 40px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  animation-name: opacity_load;
+  animation-duration: 1.8s;
+  animation-timing-function: linear;
+}
+
+@keyframes opacity_load {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.logo img {
+  width: 30px;
+  margin-left: 0.5rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin-right: 30px;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+}
+
+.menu a {
+  display: block;
+  padding: 0px 40px;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s;
+  text-align: end;
+  font-size: var(--step--2);
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.burger {
+  width: 30px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.burger .line {
+  width: 100%;
+  height: 2px;
+  margin-top: 8px;
+  background-color: var(--color-primary);
+  transition: 0.2s linear;
+}
+
+.burger .line:first-of-type {
+  margin-top: 0;
+}
+.burger {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .menu {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  .burger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+    transition: 0.2s linear;
+  }
+
+  .burger.active .line:nth-child(2) {
+    opacity: 0;
+    transition: 0.15s linear;
+  }
+
+  .burger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    transition: 0.2s linear;
+  }
+
+  nav.active .menu {
+    display: block;
+    background-color: var(--color-secondary);
+    position: absolute;
+    top: 70px;
+    left: 13px;
+
+    width: 96%;
+    border-radius: 40px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+  nav.active .menu li {
+    margin: 10px 20px;
+  }
+
+  nav.active .menu a {
+    font-size: 24px;
+  }
+}
+
 /************** hero_section *****************/
 
 .hero_section {
   padding: 2rem 4rem;
-  margin-bottom: 6rem;
+  margin-bottom: var(--space-m);
+  margin-top: var(--space-m);
+  animation-name: opacity_load;
+  animation-duration: 1.8s;
+  animation-timing-function: linear;
 }
 
 .hero_section h1 {
-  font-size: 3.125rem;
+  font-size: var(--step-5);
   color: var(--color-secondary);
+  text-align: center;
 }
 
 .hero_section h2 {
   font-family: var(--font-body);
-  font-size: 1.8rem;
+  font-size: var(--step-2);
+  text-align: center;
   font-weight: 400;
   margin-bottom: 2rem;
   color: var(--color-secondary);
 }
 
-.hero_section img {
-  max-width: 500px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
 .Hero_image {
   display: grid;
   grid-template-columns: 1fr;
+  position: relative;
+}
+
+.Hero_image img:first-child {
+  z-index: 2;
+  width: 50%;
+  justify-self: center; /* horisontalt centreret */
+  align-self: center;
 }
 
 .Hero_image img {
   grid-area: 1/1;
+  max-width: 100%;
+  height: auto;
 }
 
 /************* about_section ***************/
@@ -110,6 +259,21 @@ video {
 .about_section {
   background-color: var(--color-secondary);
   padding: var(--space-xl) var(--space-m);
+}
+
+.about_section img {
+  max-width: 550px;
+}
+
+@keyframes --inflate {
+  from {
+    transform: translateX(-100%) translateY(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
 }
 
 .about_section h1 {
@@ -129,13 +293,24 @@ video {
 
 .cv_section {
   padding: var(--space-xl) var(--space-m);
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: var(--space-m);
+}
+
+@keyframes --inflate1 {
+  from {
+    scale: 1.5;
+    opacity: 0;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
 }
 
 .cv_section h3 {
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   color: var(--color-secondary);
   text-align: center;
   margin-bottom: var(--space-m);
@@ -146,15 +321,16 @@ video {
   margin-top: 0;
 }
 
-.line {
+.stroke {
   background-color: var(--color-secondary);
   height: 2px;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-li {
+.cv_section li {
   list-style: none;
+  text-align: left;
   margin-bottom: 1rem;
   color: var(--color-secondary);
   font-size: var(--step--1);
@@ -165,12 +341,20 @@ li {
   font-size: var(--step--1);
 }
 
+.technologies ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 100px;
+  width: max-content;
+  margin: 0 auto;
+}
+
 /************** Footer ****************/
 
 footer {
   background-color: var(--color-secondary);
   color: var(--color-primary);
-  padding: 2rem;
+  padding: 4rem 2rem;
 }
 
 footer h2 {
@@ -183,7 +367,7 @@ footer h1 {
   font-size: 2.5rem;
 }
 
-footer .line {
+footer .stroke {
   background-color: var(--color-primary);
 }
 
@@ -209,10 +393,11 @@ html {
 
 .according {
   display: grid;
-  grid-template-columns: min(100%, 150ch);
+  grid-template-columns: min(100%, 155ch);
   place-content: center;
   gap: 2px;
-  padding: var(--space-xl) var(--space-m);
+  padding: 0 var(--space-m);
+  margin-bottom: var(--space-3xl);
 
   h1 {
     font-size: var(--step-5);
@@ -239,6 +424,7 @@ summary {
     margin: 0;
     font-family: var(--font-body);
     color: var(--color-secondary);
+    font-size: var(--step--1);
     line-height: 1.6;
     text-wrap: balance;
   }
@@ -290,6 +476,10 @@ details[open]::details-content {
   opacity: 90%;
 }
 
+.according h1 {
+  margin-bottom: 2rem;
+}
+
 video {
   max-width: 500px;
   margin-inline: auto;
@@ -300,21 +490,10 @@ video {
 @media (min-width: 1000px) {
   /************ Hero_section *************/
   .hero_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-items: center;
-    margin-bottom: 8rem;
-    margin-top: 3rem;
-  }
-
-  .hero_section h1 {
-    font-size: 6rem;
-  }
-
-  .hero_section h2 {
-    font-size: 3.5rem;
+    padding-top: 0;
   }
 
   /************* about_section **************/
@@ -328,6 +507,12 @@ video {
     align-items: center;
     justify-items: center;
     margin-bottom: 6rem;
+
+    height: 100%; /* giver scroll */
+    view-timeline: --section;
+    animation: --inflate linear both;
+    animation-timeline: --section;
+    animation-range: 5% 40%;
 
     & img {
       max-width: 550px;
@@ -348,11 +533,17 @@ video {
   .cv_section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 200px;
+    gap: 300px;
     max-width: fit-content;
     margin: 0 auto;
     justify-items: center;
     margin-bottom: 8rem;
+    position: sticky;
+    height: 100%;
+    view-timeline: --section;
+    animation: --inflate1 linear both;
+    animation-timeline: --section;
+    animation-range: 5% 50%;
   }
 
   .cv_section h3 {
@@ -371,13 +562,17 @@ video {
     width: 500px;
   }
 
+  .technologies ul {
+    display: block;
+  }
+
   /************** footer **********************/
 
   .footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    max-width: 1200px;
+    max-width: 155ch;
     margin: 0 auto;
   }
 
@@ -389,7 +584,7 @@ video {
     justify-self: end;
   }
 
-  .footer .line {
+  .footer .stroke {
     width: 400px;
   }
 
@@ -410,6 +605,10 @@ video {
 
   .according {
     margin-bottom: 14rem;
+
+    p {
+      font-size: 1.1rem;
+    }
   }
 
   .content {
